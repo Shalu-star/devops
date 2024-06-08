@@ -1,0 +1,16 @@
+// contents of main Jenkisnfile 
+
+node {
+  
+  stage('SCM Checkout'){
+        git branch: 'main', credentialsId: 'githubCodeRepoCredentials', url: 'https://github.com/vks414/composable-commerce.git'
+    }
+  
+  stage('SonarQube Analysis') {
+    def scannerHome = tool 'SonarScanner';
+    withSonarQubeEnv('sonar-server') {
+      sh "${scannerHome}/bin/sonar-scanner"
+    }
+  }
+  
+}

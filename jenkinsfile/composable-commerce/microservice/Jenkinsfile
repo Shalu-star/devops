@@ -1,0 +1,22 @@
+node{ 
+    stage('SCM Checkout'){
+        git branch: 'main', credentialsId: 'githubCodeRepoCredentials', url: 'https://github.com/vks414/composable-commerce.git'
+    }
+    stage('Build image'){
+        sh 'docker build -t shalu7/microprice-image -f microservices/microprice/Dockerfile microservices/microprice'
+    }
+    
+    stage('stop and remove the already running container'){
+        sh 'docker stop microprice-service'
+        sh 'docker rm microprice-service'
+    }
+    stage('Push the image'){
+        withCredentials([string(credentialsId: 'dockerHubPassword', variable: 'dockerHubPwd')]) {
+            sh "docker login -u shalu7 -p ${dockerHubPwd}"
+        }
+        sh 'docker push shalu7/microprice-image'
+    }
+    stage('Run the container'){
+        sh 'docker run -dp 8082:8082 --name microprice-service shalu7/microprice-image'
+    }
+}

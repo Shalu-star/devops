@@ -1,0 +1,36 @@
+{
+"$id": "https://tf-amplience-provider.com/page_link",
+"$schema": "http://json-schema.org/draft-07/schema#",
+"allOf": [
+{
+"$ref": "http://bigcontent.io/cms/schema/v1/core#/definitions/content"
+}
+],
+"title": "TestContent",
+"description": "TestContent",
+"type": "object",
+"properties": {
+"title": {
+"title": "Title",
+"allOf": [
+{
+"$ref": "http://bigcontent.io/cms/schema/v1/localization#/definitions/localized-string"
+}
+]
+},
+"color": {
+"title": "Color",
+"type": "string",
+"format": "color"
+}
+},
+"propertyOrder": [
+"title",
+"color"
+],
+"required": [
+"title",
+"color"
+]
+
+}

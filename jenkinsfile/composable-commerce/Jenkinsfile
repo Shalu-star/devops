@@ -1,0 +1,51 @@
+pipeline{
+    agent any
+    stages('Folderwise build'){
+        stage('SCM checkout'){
+           steps{
+                git branch: 'main', credentialsId: 'githubCodeRepoCredentials', url: 'https://github.com/vks414/composable-commerce.git'
+           }
+        }
+        stage('microprice ci') {
+            when {
+                changeset "*/microprice/**/*"
+            }
+            steps{
+                 build job: "microprice-pipeline", parameters: [string(name: 'main', value: env.BRANCH_NAME)]
+            }
+        }
+        stage('microstock ci') {
+            when {
+                changeset "*/microstock/**/*"
+            }
+            steps{
+                 build job: "Microstock", parameters: [string(name: 'main', value: env.BRANCH_NAME)]
+            }
+        }
+        stage('microreview ci') {
+            when {
+                changeset "*/microreview/**/*"
+            }
+            steps{
+                 build job: "microreview-pipeline", parameters: [string(name: 'main', value: env.BRANCH_NAME)]
+            }
+        }
+        stage('backoffice ci') {
+            when {
+                changeset "backoffice/**/*"
+            }
+            steps{
+                 build job: "backoffice-pipeline", parameters: [string(name: 'main', value: env.BRANCH_NAME)]
+            }
+        }
+        stage('storefront-nextjs ci') {
+            when {
+                changeset "storefront-nextjs/**/*"
+            }
+            steps{
+                 build job: "storefront-nextjs", parameters: [string(name: 'main', value: env.BRANCH_NAME)]
+            }
+        }
+    }
+    
+}

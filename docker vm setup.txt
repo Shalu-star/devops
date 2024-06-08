@@ -1,0 +1,84 @@
+Step 1: docker build .
+
+Step 2: docker build -t shalu7/storefront .
+
+Step 3: docker run -p 3001:3000 shalu7/storefront 
+
+Now in new console , follow below steps 
+
+Step 1: gcloud services enable containerregistry.googleapis.com
+
+Step 2: docker tag shalu7/storefront gcr.io/citric-celerity-374512/storefront-image
+
+Step 3: docker push gcr.io/citric-celerity-374512/storefront-image
+
+Step 4: gcloud container images list-tags gcr.io/devops-project-376507/storefront-image
+
+Step 5: docker pull gcr.io/citric-celerity-374512/storefront-image
+
+Step 6: gcloud compute instances create-with-container reactstore-vm\
+        --container-image gcr.io/citric-celerity-374512/storefront-image@sha256:b119c536088f0f2c4b1cccd1eb93002293f3cb02c1c4c0386d9f87e7d2c11ace
+
+Step 7: Create firerule for port 3000 in vpc firewall 
+
+Step 8: hit the url 34.133.228.113:3000 
+
+
+docker tag 175fa89e0c850e9dd7aa90  gcr.io/devops-project-376507/storefrontnextjs-image
+docker push gcr.io/devops-project-376507/storefrontnextjs-image
+
+
+docker tag f42e389a78892def245a6a gcr.io/devops-project-376507/microstock-image
+docker push gcr.io/devops-project-376507/microstock-image
+
+docker tag f039406faf0a25b6bb73 gcr.io/devops-project-376507/microprice-image
+docker push gcr.io/devops-project-376507/microprice-image
+
+docker tag 7301eead8655117d9bea5a gcr.io/devops-project-376507/b2borg-image
+docker push gcr.io/devops-project-376507/b2borg-image
+
+docker tag 1fd04874b82c48c3eb16ed3eaa9 gcr.io/devops-project-376507/backoffice-image
+docker push gcr.io/devops-project-376507/backoffice-image
+
+docker tag e91ba67f1e3f3a4aad8545bed gcr.io/devops-project-376507/microreview-image
+docker push gcr.io/devops-project-376507/microreview-image
+ curl --request GET \
+--url http://localhost:8082/price/all\
+--header 'content-type: application/json'
+
+
+
+848e11de59334978b2698de338fe87b8
+
+/var/jenkins_home/secrets/initialAdminPassword
+
+
+docker run -d --name jenkins -p 5000:5000 -p 50000:50000v-v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11
+
+http://34.69.195.47:5000
+
+gcloud init && git config --global credential.https://source.developers.google.com.helper gcloud.sh
+
+
+git remote add google https://source.developers.google.com/p/devops-project-376507/r/composable_E-commerce
+
+
+git push --all google
+
+
+git remote remove google
+
+git remote -v 
+
+
+git pull https://source.developers.google.com/p/devops-project-376507/r/composable_E-commerce  (Cloud SDK)
+
+
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin:/usr/lib/jvm/java-11-openjdk-amd64/bin/
+
+
+
+
+
+sudo setfacl --modify user:composableasset:rw /var/run/docker.sock

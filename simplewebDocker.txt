@@ -1,0 +1,11 @@
+# use an existing docker image as base 
+FROM node:14-alpine 
+
+
+# download and install a dependency 
+COPY ./ ./
+RUN npm install
+
+EXPOSE 8080:8080
+# tell the image what to do when it starts as a container 
+CMD ["npm","start"]

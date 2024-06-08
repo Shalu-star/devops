@@ -1,0 +1,65 @@
+##### Terraform setup #######
+
+wget https://releases.hashicorp.com/terraform/1.4.6/terraform_1.4.6_linux_amd64.zip
+sudo apt-get install unzip
+unzip terraform_1.4.6_linux_amd64.zip
+sudo cp terraform /usr/bin/
+terraform -v
+apt-get remove terraform -y
+echo $PATH
+terraform -help
+
+terraform init
+terraform apply
+terraform destroy
+
+
+
+##### Commercetools #######
+
+manage_api_clients:composable-commerce123
+      
+project_key  - composable-commerce123
+client_id - UI1rcrBeffnNjMPhiqUCEB8X
+secret - 9PCgC2gxs6z_NazojICW9pqBL7IOmuAw
+scope - manage_project:composable-commerce123
+API URL - https://api.us-central1.gcp.commercetools.com
+Auth URL - https://auth.us-central1.gcp.commercetools.com
+
+
+provider "commercetools" {
+  client_id     = "UI1rcrBeffnNjMPhiqUCEB8X"
+  client_secret = "9PCgC2gxs6z_NazojICW9pqBL7IOmuAw"
+  project_key   = "composable-commerce123"
+  scopes        = "manage_project:composable-commerce123"
+  api_url       = "https://api.us-central1.gcp.commercetools.com"
+  token_url     = "https://auth.us-central1.gcp.commercetools.com"
+}
+
+export TF_VAR_project_key="your_project_key"
+export TF_VAR_client_id="your_client_id"
+export TF_VAR_client_secret="your_client_secret"
+export TF_VAR_api_url="https://api.europe-west1.gcp.commercetools.com"
+curl https://auth.us-central1.gcp.commercetools.com/oauth/token \
+     --basic --user "UI1rcrBeffnNjMPhiqUCEB8X:9PCgC2gxs6z_NazojICW9pqBL7IOmuAw" \
+     -X POST \
+     -d "grant_type=client_credentials&scope=manage_project:composable-commerce123"
+
+export CTP_DEBUG=1
+echo $TF_VAR_api_url
+
+
+
+
+https://github.com/labd/terraform-provider-commercetools
+Commerce@123
+https://mc.us-central1.gcp.commercetools.com/composable-commerce123/welcome
+https://mc.europe-west1.gcp.commercetools.com/composable-asset/welcome
+https://impex.europe-west1.gcp.commercetools.com/
+
+
+terraform state list
+terraform destroy -target RESOURCE_TYPE.NAME
+eg, terraform destroy -target commercetools_subscription.my-subscription
+terraform state show <resource_name>
+eg , terraform state show amplience_content_type.sample

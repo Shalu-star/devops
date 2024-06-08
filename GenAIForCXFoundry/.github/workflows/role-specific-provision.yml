@@ -1,0 +1,74 @@
+name: Deploy to Pre Created AzureRSG
+on:
+  workflow_dispatch:
+    inputs:
+      ResourceGroupName:
+        description: Resource Group Name
+      OPENAILocation:
+        description: Azure OPENAI Location
+        required: true
+      EmbeddingSmallLocation:
+        description: Azure Embedding Small Location
+        required: true
+      ResourcePrefix:
+        description: Resource Prefix
+        required: true
+      BaseName:
+        description: Base Name
+        required: true
+      SqlServerAdministratorLogin:
+        description: SQL Server Administrator Login Id
+        required: true
+      SqlServerAdministratorLoginPassword:
+        description: SQL Server Administrator Login Password
+        required: true
+      EmailId:
+        description: Super Admin Email ID
+        required: true
+      ProjectBudget:
+        description: Project Budget
+        required: true
+      SendgridApiKey:
+        description: Sendgrid Api Key
+        required: false
+
+jobs:
+  deploy-resources:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Azure CLI
+        run: |
+          curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Replace placeholders in SQL schema
+        run: |
+          sed -i 's/{{EmailId}}/${{ github.event.inputs.EmailId }}/g' schema.sql
+          sed -i 's/{{ProjectBudget}}/${{ github.event.inputs.ProjectBudget }}/g' schema.sql
+
+      - name: Deploy to Azure using ARM template
+        run: |
+          az deployment group create \
+            --resource-group  ${{ github.event.inputs.ResourceGroupName }}\
+            --template-file arm-template/main.bicep \
+            --parameters \
+              OPENAILocation=${{ github.event.inputs.OPENAILocation }} \
+              embSmallLocation=${{ github.event.inputs.EmbeddingSmallLocation }} \
+              ResourcePrefix=${{ github.event.inputs.ResourcePrefix }} \
+              baseName=${{ github.event.inputs.BaseName }} \
+              docker_password=${{ secrets.DOCKER_CREDS }} \
+              sqlServerAdministratorLogin=${{ github.event.inputs.SqlServerAdministratorLogin }} \
+              sqlServerAdministratorLoginPassword=${{ github.event.inputs.SqlServerAdministratorLoginPassword }} \
+              sendgridApiKey=${{ github.event.inputs.SendgridApiKey }}
+
+      - name: Initialize Database
+        run: |
+          echo "Setting up database schema and initial data..."
+          sqlcmd -S "tcp:sql${{ github.event.inputs.ResourcePrefix }}.database.windows.net,1433" -U "${{ github.event.inputs.SqlServerAdministratorLogin }}" -P "${{ github.event.inputs.SqlServerAdministratorLoginPassword }}" -d "genaicxfoundryDb" -i "schema.sql"

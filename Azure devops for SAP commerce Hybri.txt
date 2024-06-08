@@ -1,0 +1,70 @@
+Azure devops for SAP commerce Hybris:
+
+
+Connected with git repo and it’s branch where yaml file for pipeline is present
+Encounter error as No hosted parallelism has been purchased or granted. To request a free parallelism grant, please fill out the following form https://aka.ms/azpipelines-parallelism-request
+It is resoled either by requesting azure to grant by filling this form https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR63mUWPlq7NEsFZhkyH8jChUMlM3QzdDMFZOMkVBWU5BWFM3SDI2QlRBSC4u
+
+Or create your own agent , and we choose 2nd one by creating gcp Jenkins-vm as agent and run further steps of pipeline 
+
+Then we encounter permission related error and it’s resolced by following steps 
+
+ls -l /tmp/rollup-plugin-progress
+
+-rw-r--r-- 1 jenkins jenkins 3 Jun 19 18:25 /tmp/rollup-plugin-progress
+
+sudo chown shalu_a_gupta /tmp/rollup-plugin-progress
+
+ls -l /tmp/rollup-plugin-progress
+
+-rw-r--r-- 1 shalu_a_gupta jenkins 3 Jun 19 18:25 /tmp/rollup-plugin-progress
+
+
+After successful build we replace exact path with below var :
+Agent.BuildDirectory  /home/shalu_a_gupta/myagent/_work/1
+
+Agent.WorkFolder  /home/shalu_a_gupta/myagent/_work
+
+The Agent.BuildDirectory variable refers to the root directory of the current build or pipeline run on the agent. It provides the path where your source code and other artifacts are downloaded and where subsequent build tasks are executed
+
+
+The Agent.WorkFolder variable refers to the root directory of the current agent workspace. It provides the path where the pipeline job is executed and where the source code, build artifacts, and other files related to the pipeline are stored.
+
+
+Below is the yaml code :
+
+
+trigger:
+  branches:
+    include:
+      - main-cc-ext-azure
+      
+pool: myownagent
+
+stages:
+- stage: ExtractZipFiles
+  displayName: 'Extract Zip Files'
+  jobs:
+  - job: ExtractZipFilesJob
+    displayName: 'Extract Zip Files'
+    steps:
+    - task: ExtractFiles@1
+      displayName: 'Extract Files'
+      inputs:
+        archiveFilePatterns: '$(Agent.WorkFolder)/CXCOMM220500P.ZIP'
+        destinationFolder: '$(Agent.WorkFolder)/hybris_suite'
+    - script: |
+        cp -R $(Agent.BuildDirectory)/s/core-customize/bin/custom $(Agent.WorkFolder)/hybris_suite/hybris/bin
+        cp -R $(Agent.BuildDirectory)/s/core-customize/config $(Agent.WorkFolder)/hybris_suite/hybris	
+    - task: ExtractFiles@1
+      displayName: 'ExtractIntegration'
+      inputs:
+        archiveFilePatterns: '$(Agent.WorkFolder)/CXCOMINTPK220500P_1-80006941.ZIP'
+        destinationFolder: '$(Agent.WorkFolder)/hybris_integration_suite' 
+    - script: 
+        cp -R $(Agent.WorkFolder)/hybris_integration_suite/* $(Agent.WorkFolder)/hybris_suite
+    - script: |
+        cd $(Agent.WorkFolder)/hybris_suite/hybris/bin/platform
+        . ./setantenv.sh
+        ant clean all
+        

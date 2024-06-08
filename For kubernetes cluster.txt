@@ -1,0 +1,40 @@
+For kubernetes cluster 
+
+create vpc.tf
+main.tf
+gke.tf
+terraform.tfvars
+
+then run 
+terraform init
+terraform plan 
+terraform apply
+
+after that cluster created 
+
+dockerize microreview image in container registry then  
+
+gcloud config set project <projectid>
+
+gcloud container clusters get-credentials jenkins-ms -gke --region=us-central1-c
+
+export KUBECONFIG=~/.kube/config
+
+cat jenkins-ms-5aa532b8865f.json | docker login -u _json_key --password-stdin https://gcr.io
+
+gcloud auth activate-service-account terraformsetup@jenkins-ms.iam.gserviceaccount.com --key-file=jenkins-ms-5aa532b8865f.json
+
+kubectl create secret docker-registry countly-registry \
+  --docker-server=https://gcr.io \
+  --docker-username=_json_key \
+  --docker-password="$(cat jenkins-ms-5aa532b8865f.json)"
+
+create deployment.yml
+deployment.tf
+Include countly-registry in .yml file as       
+ imagePullSecrets:
+   - name: countly-registry
+
+
+
+
