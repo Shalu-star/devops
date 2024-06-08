@@ -1,0 +1,45 @@
+1. Accelator:
+	if we want to craete a b2c site then we dont have to code from basics. We hav to just customize the 
+existing code. This type of already developed template a/q to business req. is known as accelator.
+
+Hybris has 4 accelators:
+ 
+ a. B2c acc.- for eg: amazon, flipkart
+ b. b2b acc.- for eg: if lenovo and Hcl work together is b2b 
+ c. c2b acc.- if i hav developed some projects and u bid this project to various caompanies.
+ d. c2c acc.- for eg: olx
+
+B2c acc
+Hybris has provided a template we only just ahv to customise a/q to rqquirement.
+ 
+in B2c acc there is alredy 
+Add to cart 
+checkout
+payment
+order placement   template.
+
+2. Extension:
+  java - create project - write code similarly
+  hybris- create extension - write code
+
+In hybris for each functinality, modules we hav diff extensions.
+
+we modularize hybris code into small java modules/projects and those modules/projects are called extension.
+
+
+we can create new extensions in custom folder.
+platform->extgen->build.properties  in this folder our path is declared where
+extension will be created.
+
+=>Command to create new extension: ant extgen
+default template is yempty.
+extension mame Hybris
+package name de.hybris.training
+
+after creating new extension we hav to add this in hybris->config->localextensions.xml file.
+ then we hav to do ant clean all then in the extension ther will be classes extensioninfo.xml folder will be created.
+
+
+	
+
+

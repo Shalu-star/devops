@@ -1,0 +1,15 @@
+Nov 30, 2022 11:05:16 AM org.apache.catalina.core.StandardWrapperValve invoke
+SEVERE: Servlet.service() for servlet [DispatcherServlet] in context with path [/grocerymatestorefront] threw exception [An exception occurred processing [/WEB-INF/views/responsive/pages/product/productLayout2Page.jsp] at line [6]
+
+3: <%@ taglib prefix="cms" uri="http://hybris.com/tld/cmstags"%>
+4: <%@ taglib prefix="product" tagdir="/WEB-INF/tags/responsive/product"%>
+5:
+6: <template:page pageTitle="${pageTitle}">
+7:      <cms:pageSlot position="Section1" var="comp" element="div" class="productDetailsPageSection1">
+8:              <cms:component component="${comp}" element="div" class="productDetailsPageSection1-component"/>
+9:      </cms:pageSlot>
+
+
+Stacktrace:] with root cause
+java.lang.IllegalStateException: Neither BindingResult nor plain target object for bean name 'feedbackForm' available as request attribute
+        at org.springframework.web.servlet.support.BindStatus.<init>(BindStatus.java:153)

@@ -1,0 +1,18 @@
+inputs:
+  description:
+    type: string
+    default: cat
+outputs:
+  content:
+    type: string
+    reference: ${inputs.description}
+nodes:
+  - name: embedding
+    type: python
+    source:
+      type: package
+      tool: promptflow.tools.embedding.embedding
+    inputs:
+      connection: democonn
+      input: ${inputs.description}
+      deployment_name: ${inputs.description}

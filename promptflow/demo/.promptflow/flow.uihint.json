@@ -1,0 +1,11 @@
+{
+  "nodes": {
+    "embedding": {
+      "variant_0": {
+        "inputs": {
+          "input": []
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,300 @@
+{
+  "package": {
+    "promptflow.tools.embedding.embedding": {
+      "name": "Embedding",
+      "description": "Use Open AI's embedding model to create an embedding vector representing the input text.",
+      "type": "python",
+      "module": "promptflow.tools.embedding",
+      "function": "embedding",
+      "inputs": {
+        "connection": {
+          "type": [
+            "AzureOpenAIConnection",
+            "OpenAIConnection"
+          ]
+        },
+        "deployment_name": {
+          "type": [
+            "string"
+          ],
+          "enabled_by": "connection",
+          "enabled_by_type": [
+            "AzureOpenAIConnection"
+          ],
+          "capabilities": {
+            "completion": false,
+            "chat_completion": false,
+            "embeddings": true
+          },
+          "model_list": [
+            "text-embedding-ada-002",
+            "text-search-ada-doc-001",
+            "text-search-ada-query-001"
+          ]
+        },
+        "model": {
+          "type": [
+            "string"
+          ],
+          "enabled_by": "connection",
+          "enabled_by_type": [
+            "OpenAIConnection"
+          ],
+          "enum": [
+            "text-embedding-ada-002",
+            "text-search-ada-doc-001",
+            "text-search-ada-query-001"
+          ],
+          "allow_manual_entry": true
+        },
+        "input": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "package": "promptflow-tools",
+      "package_version": "1.4.0"
+    }
+  },
+  "code": {
+    "ConfigLoader.py": {
+      "type": "python",
+      "inputs": {
+        "config_yaml": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "ConfigLoader.py",
+      "function": "my_python_tool"
+    },
+    "CheckExistingContext.py": {
+      "type": "python",
+      "inputs": {
+        "history": {
+          "type": [
+            "list"
+          ]
+        }
+      },
+      "source": "CheckExistingContext.py",
+      "function": "check_existing_context"
+    },
+    "QueryParser.py": {
+      "type": "python",
+      "inputs": {
+        "query": {
+          "type": [
+            "string"
+          ]
+        },
+        "conversation": {
+          "type": [
+            "list"
+          ]
+        }
+      },
+      "source": "QueryParser.py",
+      "function": "query_parser"
+    },
+    "ChatFlow.py": {
+      "type": "python",
+      "inputs": {
+        "check_existing_context": {
+          "type": [
+            "bool"
+          ]
+        },
+        "filter": {
+          "type": [
+            "object"
+          ]
+        },
+        "searchType": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "ChatFlow.py",
+      "function": "chat_flow"
+    },
+    "FormatRetrievedDocuments.py": {
+      "type": "python",
+      "inputs": {
+        "docs": {
+          "type": [
+            "list"
+          ]
+        },
+        "maxTokens": {
+          "type": [
+            "int"
+          ]
+        }
+      },
+      "source": "FormatRetrievedDocuments.py",
+      "function": "format_retrieved_documents"
+    },
+    "FormatConversation.py": {
+      "type": "python",
+      "inputs": {
+        "history": {
+          "type": [
+            "list"
+          ]
+        },
+        "maxTokens": {
+          "type": [
+            "int"
+          ]
+        }
+      },
+      "source": "FormatConversation.py",
+      "function": "format_conversation"
+    },
+    "DetermineReply.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "conversation": {
+          "type": [
+            "string"
+          ]
+        },
+        "documentation": {
+          "type": [
+            "string"
+          ]
+        },
+        "user_query": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "DetermineReply.jinja2"
+    },
+    "DetermineReply_variant_1.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "conversation": {
+          "type": [
+            "string"
+          ]
+        },
+        "documentation": {
+          "type": [
+            "string"
+          ]
+        },
+        "user_query": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "DetermineReply_variant_1.jinja2"
+    },
+    "GetContextFromHistory.py": {
+      "type": "python",
+      "inputs": {
+        "history": {
+          "type": [
+            "list"
+          ]
+        }
+      },
+      "source": "GetContextFromHistory.py",
+      "function": "get_context_from_history"
+    },
+    "ContinueReply.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "conversation": {
+          "type": [
+            "string"
+          ]
+        },
+        "context": {
+          "type": [
+            "string"
+          ]
+        },
+        "user_query": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "ContinueReply.jinja2"
+    },
+    "GenerateResult.py": {
+      "type": "python",
+      "inputs": {
+        "chat_flow": {
+          "type": [
+            "string"
+          ]
+        },
+        "determine_reply": {
+          "type": [
+            "string"
+          ]
+        },
+        "continue_reply": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "GenerateResult.py",
+      "function": "generate_result"
+    },
+    "LogParam.py": {
+      "type": "python",
+      "inputs": {
+        "filter": {
+          "type": [
+            "object"
+          ]
+        },
+        "topK": {
+          "type": [
+            "int"
+          ]
+        },
+        "maxTokens": {
+          "type": [
+            "int"
+          ]
+        },
+        "searchType": {
+          "type": [
+            "string"
+          ]
+        },
+        "dbName": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "LogParam.py",
+      "function": "log_param"
+    },
+    "CollectionFilter.py": {
+      "type": "python",
+      "inputs": {
+        "input1": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "CollectionFilter.py",
+      "function": "construct_filter_query"
+    }
+  }
+}

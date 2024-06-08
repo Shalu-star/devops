@@ -1,0 +1,62 @@
+Software testing :
+
+
+SDLC :
+
+
+Types of requirement :
+
+1. Functional 
+2. Non-functional (performance , security, etc)
+3. Database
+
+
+SRS/FRS -> S/w req. specifications / functional req. specifications
+
+Design 
+
+1. Low level design 
+
+2. High level design 
+
+Implementation/coding ->(Unit , integrationg testing -> White box testing )
+
+Testing (STLC)
+
+1. Test planning (Test Lead/Test Manager)
+2. Test Designing (Ststic testing / verification) (Tester/Sen. Tester , Test Lead) Tracebility matrix 
+3. Test Execution (Dynamic testing / validation) (Tester/Sen. Tester , Test Lead) 
+4. Test completion (Tester/Sen. Tester , Test Lead)
+
+
+Agile - the scrum framework 
+
+product ownwer 
+product backlog 
+sprint planning meeting 
+sprint backlog 
+sprint (1 to 4 weeks, 7-10 members)
+scrum master 
+Burndown/up chart 
+daily scrum meeting
+sprint review 
+sprint retrospective 
+
+
+
+Smoke testing, also known as "Build Verification Testing" or "Build Acceptance Testing," is a preliminary testing process performed on a software build to ensure that the basic and critical functionalities of the application are working as expected and that the software doesn't crash immediately upon starting. It's a quick check to determine if the build is stable enough for further testing. The goal of smoke testing is to catch severe defects early in the development process.
+
+
+Regression testing is the software testing level that checks whether the introduction of new code, changes, or updates have caused any unintended side effects or broken existing functionality. It involves running tests that have been previously executed to ensure that the software still behaves correctly after modifications. The goal of regression testing is to catch any regressions (unintended negative changes) that might occur as a result of code changes.
+
+
+White box testing, also known as clear box testing or structural testing, allows the tester to inspect and examine the internal implementation details of the software. Testers who perform white box testing have access to the source code, algorithms, and internal logic of the software. This type of testing is used to ensure that code paths, branches, and statements are executed correctly and that all parts of the code are tested thoroughly. It is particularly useful for identifying issues related to code coverage and logic errors.
+
+
+
+
+Selenium is a widely used tool for browser testing. It provides a framework for automating web browsers and allows testers and developers to write scripts to interact with web applications and perform various testing tasks, such as functional testing, regression testing, and performance testing, within different web browsers. The other options you mentioned (Dotnet, T-SQL, and ReactJS) are not primarily used for browser testing; Dotnet is a development framework, T-SQL is a query language for managing databases, and ReactJS is a JavaScript library for building user interfaces.
+
+
+The full form of SPICE is "Software Process Improvement and Capability Determination." SPICE is a framework for assessing and improving software development processes within organizations. It provides guidelines and criteria for evaluating the capability and maturity of software development processes, helping organizations enhance their software development practices and deliver better quality products.
+

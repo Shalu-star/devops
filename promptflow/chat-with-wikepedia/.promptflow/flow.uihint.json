@@ -1,0 +1,45 @@
+{
+  "nodes": {
+    "extract_query_from_question": {
+      "variant_0": {
+        "inputs": {
+          "chat_history": [],
+          "question": []
+        }
+      }
+    },
+    "get_wiki_url": {
+      "variant_0": {
+        "inputs": {
+          "input1": [],
+          "entity": []
+        }
+      }
+    },
+    "search_result_from_url": {
+      "variant_0": {
+        "inputs": {
+          "input1": [],
+          "url_list": []
+        }
+      }
+    },
+    "process_search_result": {
+      "variant_0": {
+        "inputs": {
+          "input1": [],
+          "search_result": []
+        }
+      }
+    },
+    "augmented_chat": {
+      "variant_0": {
+        "inputs": {
+          "chat_history": [],
+          "question": [],
+          "contexts": []
+        }
+      }
+    }
+  }
+}

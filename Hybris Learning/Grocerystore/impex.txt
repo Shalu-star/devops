@@ -1,0 +1,35 @@
+$contentCatalog=electronicsContentCatalog
+$contentCatalogName=Electronics Content Catalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCatalog=electronicsProductCatalog
+$productCatalogName=Electronics Product Catalog
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+
+
+
+INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;children(uid,$contentCV)[mode=append]
+;root;;root;;
+
+##- level 1. SiteRoot -##
+INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&componentRef);&nodeRef
+;SiteRootNode;;SiteRootNode;root;;SiteRootNode
+
+##-- level 2. children of SiteRoot --##
+INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&componentRef);&nodeRef
+;ElectronicsNavNode;;Electronics Site;SiteRootNode;;ElectronicsNavNode
+
+##--- level 3. children of <YOUR-SITE-NAME>NavNode ---##
+INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&componentRef);&nodeRef
+;ElectronicsCategoryNavNode;;Categories;ElectronicsNavNode;;ElectronicsCategoryNavNode
+
+##---- level 4. children of Category Nav ----##
+INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&linkRef);&nodeRef
+;FIRST-CATEGORYNavNode;;FIRST-CATEGORY;ElectronicsCategoryNavNode;;FIRST-CATEGORYNavNode
+
+## entries of the above navigation nodes ##
+INSERT_UPDATE CMSNavigationEntry;uid[unique=true];$contentCV[unique=true];name;navigationNode(&nodeRef);item(CMSLinkComponent.uid,CMSLinkComponent.$contentCV);
+;FIRST-CATEGORYNavNodeEntry;;FIRST-CATEGORY Navigation Node Entry;FIRST-CATEGORYNavNodeFIRST-CATEGORYCategoryLink;
+
+## links of the above navigation nodes ##
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&linkRef;&componentRef;target(code)[default='sameWindow']
+;;FIRST-CATEGORYCategoryLink;FIRST-CATEGORY Category Link;/Open-Catalogue/FIRST-CATEGORY/c/FIRST-CATEGORY-ID;FIRST-CATEOGRYCategoryLink;FIRST-CATEGORYCategoryLink

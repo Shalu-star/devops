@@ -1,0 +1,73 @@
+inputs:
+  question:
+    type: string
+    default: What is LLM ?
+  chat_history:
+    type: list
+    default: []
+outputs:
+  result:
+    type: string
+    reference: ${pick_result.output}
+nodes:
+  - name: emb_tool
+    type: python
+    source:
+      type: package
+      tool: promptflow.tools.embedding.embedding
+    inputs:
+      connection: emb_connection
+      input: ${rephrased_node.output}
+      deployment_name: embedding-genaidcx
+  - name: aisearch
+    type: python
+    source:
+      type: code
+      path: aisearch.py
+    inputs:
+      ai_conn: Azure AI Search Connection
+      vector: ${emb_tool.output}
+  - name: pick_result
+    use_variants: true
+  - name: rephrased_node
+    type: llm
+    source:
+      type: code
+      path: rephrased_node.jinja2
+    inputs:
+      deployment_name: gpt35
+      chat_history: ${inputs.chat_history}
+      question: ${inputs.question}
+    connection: democonn
+    api: chat
+node_variants:
+  pick_result:
+    default_variant_id: variant_0
+    variants:
+      variant_0:
+        node:
+          type: llm
+          source:
+            type: code
+            path: pick_result.jinja2
+          inputs:
+            deployment_name: gpt35
+            question: ${rephrased_node.output}
+            search_results: ${aisearch.output}
+            chat_history: ${inputs.chat_history}
+          connection: democonn
+          api: chat
+      variant_1:
+        node:
+          type: llm
+          source:
+            type: code
+            path: pick_result_variant_1.jinja2
+          inputs:
+            deployment_name: gpt35
+            question: ${inputs.question}
+            search_results: ${aisearch.output}
+            chat_history: ${inputs.chat_history}
+            rephrased_question: ${inputs.question}
+          connection: democonn
+          api: chat

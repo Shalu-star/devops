@@ -1,0 +1,63 @@
+Commands to run spartacus ext 
+
+
+1. install.bat –r cx-for-spa
+2. install.bat -r cx-for-spa initialize
+3. install.bat -r cx-for-spa start
+
+
+
+ https://localhost:9002
+
+https://localhost:9002/backoffice
+
+ https://apparel-uk.local:9002/yacceleratorstorefront/
+https://localhost:9002/yacceleratorstorefront/?site=electronics
+
+4. Import the below impex for Auth client to accept OCC.
+  
+INSERT_UPDATE OAuthClientDetails;clientId[unique=true]    ;resourceIds       ;scope        ;authorizedGrantTypes                                            ;authorities             ;clientSecret    ;registeredRedirectUri
+                                ;client-side              ;hybris            ;basic        ;implicit,client_credentials                                     ;ROLE_CLIENT             ;secret          ;http://localhost:9001/authorizationserver/oauth2_implicit_callback;
+                                ;mobile_android           ;hybris            ;basic        ;authorization_code,refresh_token,password,client_credentials    ;ROLE_CLIENT             ;secret          ;http://localhost:9001/authorizationserver/oauth2_callback;
+
+
+
+Portion Second for Spartacus Setup:
+
+Front End Development Requirement:
+Angular CLI: V 12.0.5 or later
+->  npm install -g @angular/cli
+->  ng version
+->  
+Node js: V 12.x
+Yarn: 1.15 or later
+
+
+
+to check angular version run command “ng - -version”.
+
+
+
+Step 1: Create a new angular project, go to the location where you want to create, open cmd and run this cmd “ng new <storename> --style=scss” (in our case storename is “electronicsspa”).
+
+
+Step 2: Check whether you are able to see the sample store or not, go to the folder created above (in our case its electronicsspa) to do that run cmd “cd <foldername>”.
+
+Step 3: Start the server, run cmd “yarn start”
+
+Step 4: After server is started hit “localhost:4200”, you should see a sample angular site running. 
+
+Step 5: To set Spartacus you must be in same folder i.e electronicsspa, run cmd “ng add @spartacus/schematics - -baseSite electronics-spa”, after running this command it will ask for several moduels just press enter or you can select your desired modules and press enter.
+
+
+
+--add-opens=java.rmi/sun.rmi.transport=null
+
+
+
+Move the custom.properties file from spartacussampledata/resources/installer/customconfig to hybris-commerce-suite-2011/installer/customconfig.
+
+
+
+
+spartacussampledata-web-spring.xml

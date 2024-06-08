@@ -1,0 +1,7 @@
+UPDATE Cronjob;code[unique=true];active
+;update-powertoolsIndex-cronJob;false
+;update-electronicsIndex-cronJob;false
+;update-apparel-ukIndex-cronJob;false
+;update-apparel-deIndex-cronJob;false
+;update-backofficeIndex-CronJob;false
+;cronJobHistoryRetentionCronJob;false

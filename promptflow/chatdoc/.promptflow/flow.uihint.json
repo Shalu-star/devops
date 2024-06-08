@@ -1,0 +1,40 @@
+{
+  "nodes": {
+    "emb_tool": {
+      "variant_0": {
+        "inputs": {
+          "input": []
+        }
+      }
+    },
+    "aisearch": {
+      "variant_0": {
+        "inputs": {
+          "vector": []
+        }
+      }
+    },
+    "pick_result": {
+      "variant_0": {
+        "inputs": {
+          "question": [],
+          "chat_history": [],
+          "search_results": []
+        }
+      },
+      "variant_1": {
+        "inputs": {
+          "rephrased_question": []
+        }
+      }
+    },
+    "rephrased_node": {
+      "variant_0": {
+        "inputs": {
+          "question": [],
+          "chat_history": []
+        }
+      }
+    }
+  }
+}

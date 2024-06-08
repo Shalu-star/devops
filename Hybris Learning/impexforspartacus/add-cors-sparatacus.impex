@@ -1,0 +1,6 @@
+INSERT_UPDATE CorsConfigurationProperty;key[unique=true];value;context[default=commercewebservices,unique=true]
+;allowedOrigins;https://localhost:4200
+;allowedMethods;GET HEAD OPTIONS PATCH PUT POST DELETE
+;allowedHeaders;origin content-type accept authorization cache-control x-anonymous-consents x-profile-tag-debug x-consent-reference occ-personalization-id occ-personalization-time
+;allowCredentials;true
+;exposedHeaders;x-anonymous-consents occ-personalization-id occ-personalization-time

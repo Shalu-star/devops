@@ -1,0 +1,84 @@
+
+# Macros / Replacement Parameter definitions
+$productCatalog=grocerymateProductCatalog
+$productCatalogName=Grocerymate Product Catalog
+
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code, $catalogVersion)
+$baseProduct=baseProduct(code,$catalogVersion)
+$approved=approvalstatus(code)[default='approved']
+$prices=Europe1prices[translator=de.hybris.platform.europe1.jalo.impex.Europe1PricesTranslator]
+
+$media=@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator]
+$thumbnail=thumbnail(code, $catalogVersion)
+$picture=picture(code, $catalogVersion)
+$thumbnails=thumbnails(code, $catalogVersion)
+$detail=detail(code, $catalogVersion)
+$normal=normal(code, $catalogVersion)
+$others=others(code, $catalogVersion)
+$data_sheet=data_sheet(code, $catalogVersion)
+$medias=medias(code, $catalogVersion)
+$galleryImages=galleryImages(qualifier, $catalogVersion)
+$siteResource=jar:de.hybris.grocerymate.initialdata.setup.InitialDataSystemSetup&/grocerymateinitialdata/import/sampledata/productCatalogs/$productCatalog
+
+# Insert Products
+INSERT_UPDATE Product;code[unique=true];$supercategories;manufacturerName;manufacturerAID;unit(code);ean;variantType(code);$catalogVersion;$approved
+;110567;573;Beverages;;pieces;
+
+
+
+# Create Media
+INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];$catalogVersion;folder(qualifier)
+
+;1200Wx1200H;/1200Wx1200H/110567-1210.jpg;$siteResource/images/1200Wx1200H/110567-1210.jpg;;;images
+;1200Wx1200H;/1200Wx1200H/110567-1211.jpg;$siteResource/images/1200Wx1200H/110567-1211.jpg;;;images
+;1200Wx1200H;/1200Wx1200H/110567-1212.jpg;$siteResource/images/1200Wx1200H/110567-1212.jpg;;;images
+;1200Wx1200H;/1200Wx1200H/110567-1213.jpg;$siteResource/images/1200Wx1200H/110567-1213.jpg;;;images
+
+;515Wx515H;/515Wx515H/110567-1210.jpg;$siteResource/images/515Wx515H/110567-1210.jpg;;;images
+;515Wx515H;/515Wx515H/110567-1211.jpg;$siteResource/images/515Wx515H/110567-1211.jpg;;;images
+;515Wx515H;/515Wx515H/110567-1212.jpg;$siteResource/images/515Wx515H/110567-1212.jpg;;;images
+;515Wx515H;/515Wx515H/110567-1213.jpg;$siteResource/images/515Wx515H/110567-1213.jpg;;;images
+
+;300Wx300H;/300Wx300H/110567-1210.jpg;$siteResource/images/300Wx300H/110567-1210.jpg;;;images
+;300Wx300H;/300Wx300H/110567-1211.jpg;$siteResource/images/300Wx300H/110567-1211.jpg;;;images
+;300Wx300H;/300Wx300H/110567-1212.jpg;$siteResource/images/300Wx300H/110567-1212.jpg;;;images
+;300Wx300H;/300Wx300H/110567-1213.jpg;$siteResource/images/300Wx300H/110567-1213.jpg;;;images
+
+;96Wx96H;/96Wx96H/110567-1210.jpg;$siteResource/images/96Wx96H/110567-1210.jpg;;;images
+;96Wx96H;/96Wx96H/110567-1211.jpg;$siteResource/images/96Wx96H/110567-1211.jpg;;;images
+;96Wx96H;/96Wx96H/110567-1212.jpg;$siteResource/images/96Wx96H/110567-1212.jpg;;;images
+;96Wx96H;/96Wx96H/110567-1213.jpg;$siteResource/images/96Wx96H/110567-1213.jpg;;;images
+
+;65Wx65H;/65Wx65H/110567-1210.jpg;$siteResource/images/65Wx65H/110567-1210.jpg;;;images
+;65Wx65H;/65Wx65H/110567-1211.jpg;$siteResource/images/65Wx65H/110567-1211.jpg;;;images
+;65Wx65H;/65Wx65H/110567-1212.jpg;$siteResource/images/65Wx65H/110567-1212.jpg;;;images
+;65Wx65H;/65Wx65H/110567-1213.jpg;$siteResource/images/65Wx65H/110567-1213.jpg;;;images
+
+;30Wx30H;/30Wx30H/110567-1210.jpg;$siteResource/images/30Wx30H/110567-1210.jpg;;;images
+;30Wx30H;/30Wx30H/110567-1211.jpg;$siteResource/images/30Wx30H/110567-1211.jpg;;;images
+;30Wx30H;/30Wx30H/110567-1212.jpg;$siteResource/images/30Wx30H/110567-1212.jpg;;;images
+;30Wx30H;/30Wx30H/110567-1213.jpg;$siteResource/images/30Wx30H/110567-1213.jpg;;;images
+
+#Media Container
+INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$catalogVersion
+
+;110567-1210;/1200Wx1200H/110567-1210.jpg,/515Wx515H/110567-1210.jpg,/300Wx300H/110567-1210.jpg,/96Wx96H/110567-1210.jpg,/65Wx65H/110567-1210.jpg,/30Wx30H/110567-1210.jpg;
+;110567-1211;/1200Wx1200H/110567-1211.jpg,/515Wx515H/110567-1211.jpg,/300Wx300H/110567-1211.jpg,/96Wx96H/110567-1211.jpg,/65Wx65H/110567-1211.jpg,/30Wx30H/110567-1211.jpg;
+;110567-1212;/1200Wx1200H/110567-1212.jpg,/515Wx515H/110567-1212.jpg,/300Wx300H/110567-1212.jpg,/96Wx96H/110567-1212.jpg,/65Wx65H/110567-1212.jpg,/30Wx30H/110567-1212.jpg;
+;110567-1213;/1200Wx1200H/110567-1213.jpg,/515Wx515H/110567-1213.jpg,/300Wx300H/110567-1213.jpg,/96Wx96H/110567-1213.jpg,/65Wx65H/110567-1213.jpg,/30Wx30H/110567-1213.jpg;
+
+
+
+
+
+
+UPDATE Product;code[unique=true];$picture;$thumbnail;$detail;$others;$normal;$thumbnails;$galleryImages;$catalogVersion
+;110567;/300Wx300H/110567-1210.jpg;/96Wx96H/110567-1211.jpg;/1200Wx1200H/110567-1213.jpg,/1200Wx1200H/110567-1212.jpg,/1200Wx1200H/110567-1210.jpg,/1200Wx1200H/110567-1211.jpg;/515Wx515H/110567-1210.jpg,/515Wx515H/110567-1213.jpg,/515Wx515H/110567-1212.jpg,/515Wx515H/110567-1210.jpg,/515Wx515H/110567-1211.jpg,/65Wx65H/110567-1210.jpg,/65Wx65H/110567-1213.jpg,/65Wx65H/110567-1212.jpg,/65Wx65H/110567-1210.jpg,/65Wx65H/110567-1211.jpg,/30Wx30H/110567-1210.jpg,/30Wx30H/110567-1213.jpg,/30Wx30H/110567-1212.jpg,/30Wx30H/110567-1210.jpg,/30Wx30H/110567-1211.jpg;/300Wx300H/110567-1210.jpg,/300Wx300H/110567-1213.jpg,/300Wx300H/110567-1212.jpg,/300Wx300H/110567-1210.jpg,/300Wx300H/110567-1211.jpg;/96Wx96H/110567-1210.jpg,/96Wx96H/110567-1213.jpg,/96Wx96H/110567-1212.jpg,/96Wx96H/110567-1210.jpg,/96Wx96H/110567-1211.jpg;110567-1210,110567-1213,110567-1212,110567-1210,110567-1211;
+
+
+UPDATE Product;code[unique=true];$prices;$approved;$catalogVersion;Europe1PriceFactory_PTG(code)
+;110567
+
+INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=pieces]);currency(isocode)[unique=true];price;minqtd;unitFactor;net
+;110567;pieces;USD;15;1;1;false

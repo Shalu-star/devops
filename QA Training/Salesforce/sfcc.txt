@@ -1,0 +1,57 @@
+https://zzrj-027.dx.commercecloud.salesforce.com/on/demandware.store/Sites-Site/default/ViewApplication-DisplayWelcomePage
+
+Day 1 : Overview of storefront , products , inventory 
+
+https://capgemini-my.sharepoint.com/personal/shankha_chaudhuri_capgemini_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fshankha%5Fchaudhuri%5Fcapgemini%5Fcom%2FDocuments%2FRecordings%2FCall%20with%20Gupta%2C%20Shalu%2D20230811%5F175936%2DMeeting%20Recording%2Emp4&ga=1
+
+
+Day 2 : Promotions, Campaigns and coupons 
+
+https://capgemini-my.sharepoint.com/personal/shankha_chaudhuri_capgemini_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fshankha%5Fchaudhuri%5Fcapgemini%5Fcom%2FDocuments%2FRecordings%2FCall%20with%20SFCC%2D20230814%5F190409%2DMeeting%20Recording%2Emp4&ga=1
+
+
+promotion class are of 3 types:
+
+1. product 
+2. order 
+3. shipping 
+
+Day 3 : perform hands on 
+
+
+Day 4 : 
+
+
+1.  which modules have u worked on sfcc: ( product, pricebook, inventory, category, promo, campaign, coupon, jobs, dev options etc)
+2.  how to run a promotion (create promo > assign to campaign)
+3.  how to run promo without creating promo (price book 1 unit 5$,  2 unit 9$)
+4.  where to change product price (pricebook)
+5.  what is a catalog (full skeleton structure of storefront, all products + categories )
+6.  what is inventory ( stock of products)
+7.  how to make product out of stock (allocation=0 in inventory)
+8.  how to verify sfcc errors: ( Logs)
+9.  types of products: (master, variation, stand alone/simple)
+10. 3rd party experience: (cybersource for payment processing, OMS for order processing)
+11. main storefront areas where u hav worked? : (home page, clp, plp, pdp, cart page, checkout pages, order confirmation page)
+
+
+
+Needs to ask:
+Have you worked with any testing tools specific to SFCC?
+Answer: Mention any relevant testing tools you're familiar with, such as automated testing frameworks, performance testing tools, or test case management tools.
+
+
+In Inventory 
+
+This page allows you to manage all detail settings of a single product inventory record.
+
+1. The Perpetual flag allows you to set a perpetual (unlimited) availability for the product in the Storefront.
+2. Allocation represents the initial amount. Based on this value (if the "Perpetual" flag is unchecked), the system calculates the actual amount available to sell (ATS) by considering all stock-level transactions that occurred after the allocation was reset (Allocation Reset Date). If you reset the allocation, the allocation reset date will also be reset.
+3. Pre-Order/Backorder Handling specifies how the Storefront behaves if there is no stock level.
+4. Pre-Order/Backorder Allocation specifies how many items are available after the stock level reaches zero.
+5. In-Stock Date specifies when stock will become available.
+6. Turnover represents the sum of all stock-level transactions that occurred after the allocation was reset and that have been exported.
+7. On Order represents the sum of all stock-level transactions that occurred but haven't been exported.
+8. Stock Level specifies how many items are in stock. It's calculated as max(0, allocation - turnover - on order).
+9. ATS represents the actual amount of items available to sell (ATS) in the Storefront. If "Pre-Order/Backorder Handling" is specified, then it's calculated as stock level + pre-order/backorder allocation. Otherwise it's the same as the stock level.
+10. Availability Status gives information about the current availability of the product based on the current data. It's possible to have values for "In Stock", "Pre-Order", "Backorder", and "Not Available".

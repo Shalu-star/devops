@@ -1,0 +1,10 @@
+2024-06-05 14:12:36 +0530    4700 execution.flow     INFO     Start executing nodes in thread pool mode.
+2024-06-05 14:12:36 +0530    4700 execution.flow     INFO     Start to run 4 nodes with concurrency level 16.
+2024-06-05 14:12:36 +0530    4700 execution.flow     INFO     Executing node rephrased_node. node run id: 0a40d69d-e597-44ee-910d-aa373b47375e_rephrased_node_0
+2024-06-05 14:12:39 +0530    4700 execution.flow     INFO     Node rephrased_node completes.
+2024-06-05 14:12:39 +0530    4700 execution.flow     INFO     Executing node emb_tool. node run id: 0a40d69d-e597-44ee-910d-aa373b47375e_emb_tool_0
+2024-06-05 14:12:41 +0530    4700 execution.flow     INFO     Node emb_tool completes.
+2024-06-05 14:12:41 +0530    4700 execution.flow     INFO     Executing node aisearch. node run id: 0a40d69d-e597-44ee-910d-aa373b47375e_aisearch_0
+2024-06-05 14:12:43 +0530    4700 execution.flow     INFO     Node aisearch completes.
+2024-06-05 14:12:43 +0530    4700 execution.flow     INFO     Executing node pick_result. node run id: 0a40d69d-e597-44ee-910d-aa373b47375e_pick_result_0
+2024-06-05 14:12:44 +0530    4700 execution.flow     INFO     Node pick_result completes.

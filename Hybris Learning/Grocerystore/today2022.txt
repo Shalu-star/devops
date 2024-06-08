@@ -1,0 +1,21 @@
+C:\Users\sgupt187\AppData\Roaming\npm
+
+
+
+
+ng new electronicsspa --style=scss
+cd electronicsspa
+yarn start
+localhost:4200
+ng add @spartacus/schematics@latest
+ng add @spartacus/schematics - -baseSite electronics-spa
+ng add @spartacus/schematics@latest --baseSite=electronics-spa
+ng add @spartacus/schematics@latest
+start your both servers
+
+
+NOT SUPPORTED: keyword "id", use "$id" for schema ID
+ng add @angular-eslint/schematics@next
+
+
+https://localhost:9002/grocerymatestorefront/electronics/en/login

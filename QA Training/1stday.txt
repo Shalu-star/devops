@@ -1,0 +1,187 @@
+Software testing principle  
+-> 7 Principles of Software Testing
+1.Testing shows presence of defects
+2.Exhaustive testing is not possible
+3.Early testing
+4.Defect clustering
+5.Pesticide paradox
+6.Testing is context dependent
+7.Absence of errors fallacy
+
+
+
+Software Development Life Cycle (SDLC)
+-> It is a process used by the software industry to design, develop and test high quality softwares. 
+   The SDLC aims to produce a high-quality software that meets or exceeds customer expectations, reaches completion within times and cost estimates.
+
+Phases of SDLC
+1. Requirement collection / gathering / analysis
+2. Feasibility study
+3. Design
+4. Coding
+5. Testing
+6. Installation and deployment
+7. Maintenance
+
+
+STLC  
+-> Software Testing Life Cycle (STLC) is a sequence of specific activities conducted during the testing process to ensure software quality goals are met. 
+   STLC involves both verification and validation activities.
+
+Phases of STLC
+1. Test analysis / planning
+2. Test management
+3. Test design
+4. Test execution
+5. Support and maintenance
+
+
+Types of Software testing 
+1. Manual Testing
+
+1.1. Whitebox
+1.2. Blackbox
+
+1.2.1. Functional Testing
+
+1.2.1.1. Unit 
+1.2.1.2. Integration
+1.2.1.2.1. Incremental 
+
+1.2.1.2.1.1. Top down (Stub is used) 
+1.2.1.2.1.2 Bottom up(Driver is used)
+
+1.2.1.2.2. Non-incremental 
+
+1.2.1.3. System
+1.2.1.4. UAT
+
+1.2.1.4.1. Alpha (Developer side)
+1.2.1.4.2. Beta (Clent/end user side)
+
+1.2.2. Non-functional testing 
+1.2.2.1. Performance
+
+1.2.2.1.1. Load
+1.2.2.1.2. Stress
+1.2.2.1.3. Scability
+1.2.2.1.4. Stability
+
+1.2.2.2 Usability
+1.2.2.3. Compatability
+
+1.3. Grey box  (Both)
+
+2. Automation Testing
+
+
+
+Levels of testing
+-> 1. Unit Testing
+   2. Integration Testing
+   3. System Testing
+   4. User Acceptance Testing
+
+
+SDLC methodologies
+->  1. Waterfall
+    2. Spiral
+    3. Hybrid
+    4. Prototype
+    5. V-shaped
+    6. Agile
+
+
+Manual Testing is the oldest type of software testing where the testers manually execute test cases without using any test automation tools.
+It means the software application is tested manually by QA testers.
+
+
+Automation Testing is the process of using the assistance of tools, scripts, and software to perform test cases by repeating pre-defined actions.
+Test Automation focuses on replacing manual human activity with systems or devices that enhance efficiency.
+
+
+Unit Testing - It is a way of testing the smallest piece of code referred to as a unit that can be logically isolated in a system. 
+It is mainly focused on the functional correctness of the standalone module.
+
+Integration Testing – It is a level of software testing where individual units are combined and tested to verify if they are working as they intend to when
+integrated.The main aim here is to test the interface between the modules.
+
+System Testing – In system testing all the components of the software are tested as a whole in order to ensure that the overall product meets the 
+requirements specified.There are dozens of types of system testing, including usability testing, regression testing, and functional testing.
+
+User Acceptance Testing – The final level, acceptance testing, or UAT (user acceptance testing), determines whether or not the software is ready to be
+released.
+
+Alpha Testing is a type of acceptance testing; performed to identify all possible issues and bugs before releasing the final product to the end users.
+
+Beta Testing is performed by “real users” of the software application in “real environment” and it can be considered as a form of external User Acceptance 
+Testing.It is the final test before shipping a product to the customers
+
+
+The testbed is an environment configured for testing. It is an environment used for testing an application, including the hardware as well as any software 
+needed to run the program to be tested.It consists of hardware, software, network configuration, an application under test, other related software.
+.
+A test case is a document that has a set of conditions or actions that are performed on the software application in order to verify the expected 
+functionality of the feature.
+
+API testing is a type of software testing where application programming interfaces (APIs) are tested to determine if they meet expectations for 
+functionality, reliability, performance, and security.In simple terms, API testing is intended to reveal bugs, inconsistencies or deviations from the 
+expected behavior of an API.
+
+
+A bug is a just fault in the software that’s detected during testing time. 
+A defect is a variance between expected results and actual results, detected by the developer after the product goes live.
+
+
+
+
+
+
+
+
+
+Retesting means testing the functionality or bug again to ensure the code is fixed. If it is not fixed, Defect needs to be re-opened. 
+If fixed, Defect is closed.
+
+Regression testing means testing your software application when it undergoes a code change to ensure that the new code has not affected other parts of 
+the software.
+
+
+
+Quality Assurance is known as QA and focuses on preventing defect. Quality Assurance ensures that the approaches, techniques, methods and processes are 
+designed for the projects are implemented correctly.
+
+
+Quality Control is known as QC and focuses on identifying a defect. QC ensures that the approaches, techniques, methods and processes are designed in the 
+project are following correctly. QC activities monitor and verify that the project deliverables meet the defined quality standards.
+
+
+Verification in Software Testing is a process of checking documents, design, code, and program in order to check if the software has been built according 
+to the requirements or not.The main goal of verification process is to ensure quality of software application, design, architecture etc. 
+The verification process involves activities like reviews, walk-throughs and inspection.
+
+
+Validation in Software Engineering is a dynamic mechanism of testing and validating if the software product actually meets the exact needs of the customer 
+or not.The process helps to ensure that the software fulfills the desired use in an appropriate environment. 
+The validation process involves activities like unit testing, integration testing, system testing and user acceptance testing. 
+
+
+Blackbox testing techniques:
+
+Boundary Value Analysis
+Equivalence Class Partitioning 
+State Transition Table
+
+
+
+Exploratory testing is a hands-on approach in which testers are involved in minimum planning and maximum test execution. 
+
+In order to identify and execute the functional requirement of an application from start to finish “use case” is used and the techniques used to do this 
+is known as “Use Case Testing.”
+
+SDLC deals with development/coding of the software while STLC deals with validation and verification of the software
+
+
+Equivalence partitioning testing is a software testing technique which divides the application input test data into each partition at least once of 
+equivalent data from which test cases can be derived.By this testing method, it reduces the time required for software testing.
+

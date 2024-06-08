@@ -1,0 +1,85 @@
+{
+  "nodeLayouts": {
+    "inputs": {
+      "x": 1067.5,
+      "y": 42,
+      "index": -1
+    },
+    "outputs": {
+      "x": 2115,
+      "y": 980,
+      "index": -1
+    },
+    "ConfigLoader": {
+      "x": 1180,
+      "y": 310,
+      "index": 0
+    },
+    "CheckExistingContext": {
+      "x": 1510,
+      "y": 310,
+      "index": 1
+    },
+    "QueryParser": {
+      "x": 1685,
+      "y": 176,
+      "index": 2
+    },
+    "ChatFlow": {
+      "x": 1607.5,
+      "y": 444,
+      "index": 3
+    },
+    "FormatRetrievedDocuments": {
+      "x": 645,
+      "y": 578,
+      "index": 4
+    },
+    "FormatConversation": {
+      "x": 140,
+      "y": 578,
+      "index": 5
+    },
+    "DetermineReply": {
+      "x": 217.5,
+      "y": 712,
+      "index": 6
+    },
+    "GetContextFromHistory": {
+      "x": 1267.5,
+      "y": 578,
+      "index": 7
+    },
+    "ContinueReply": {
+      "x": 1355,
+      "y": 712,
+      "index": 8
+    },
+    "GenerateResult": {
+      "x": 1432.5,
+      "y": 846,
+      "index": 9
+    },
+    "LogParam": {
+      "x": 2065,
+      "y": 444,
+      "index": 10
+    },
+    "Embedding": {
+      "x": 500,
+      "y": 310,
+      "index": 11
+    },
+    "Azure_CosmosDB_MongoDB_vCore_Vector_Search": {
+      "x": 510,
+      "y": 444,
+      "index": 12
+    },
+    "CollectionFilter": {
+      "x": 830,
+      "y": 310,
+      "index": 13
+    }
+  },
+  "orientation": "Vertical"
+}

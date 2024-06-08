@@ -1,0 +1,35 @@
+
+$contentCatalogName=SPA grocerymate Content Catalog
+$contentCatalog=grocerymate-spaContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCatalog=grocerymateProductCatalog
+$productCatalogName=Grocerymate Product Catalog
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$picture=media(code, $contentCV);
+$image=image(code, $contentCV);
+$media=media(code, $contentCV);
+$page=page(uid, $contentCV);
+$contentPage=contentPage(uid, $contentCV);
+$product=product(code, $productCV)
+$category=category(code, $productCV)
+$siteResource=jar:de.hybris.grocerymate.initialdata.setup.InitialDataSystemSetup&/grocerymateinitialdata/import/sampledata/contentCatalogs/$contentCatalog
+$productResource=jar:de.hybris.grocerymate.initialdata.setup.InitialDataSystemSetup&/grocerymateinitialdata/import/sampledata/productCatalogs/$productCatalog
+$jarResourceCms=jar:de.hybris.grocerymate.initialdata.setup.InitialDataSystemSetup&/grocerymateinitialdata/import/sampledata/cockpits/cmscockpit
+
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;&imageRef;folder(qualifier)[default='images']
+;;1934793_1719.jpg;$productResource/images/96Wx96H/1934793_1719.jpg;;"At your door step";1934793_1719.jpg
+;;1992695_11441.jpg;$productResource/images/96Wx96H/1992695_11441.jpg;;"Cheers";1992695_11441.jpg
+;;1978440_114081.jpg;$productResource/images/96Wx96H/1978440_114081.jpg;;"Cash Back";1978440_114081.jpg
+;;1992696_11443.jpg;$productResource/images/96Wx96H/1992696_11443.jpg;;"Big Basket";1992696_11443.jpg
+;;1992697_11445.jpg;$productResource/images/96Wx96H/1992697_11445.jpg;;"Look at once";1992697_11445.jpg
+
+INSERT_UPDATE BannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;urlLink;$picture[lang=en]
+;;HousefullSaleBannerComponent;At your door step;HousefullSaleBannerComponent;/Open-Catalogue/Snacks/c/572;1934793_1719.jpg
+;;StationeryAndGamesBannerComponent;Discount on Beverages;StationeryAndGamesBannerComponent;/Open-Catalogue/Beverages/c/573;1992695_11441.jpg
+;;CashBackBannerComponent;Cash Back on Vegetables;CashBackBannerComponent;/Open-Catalogue/Vegetables/c/1201;1978440_114081.jpg
+;;BigBasketBannerComponent;Big Basket Vegetables;BigBasketBannerComponent;/Open-Catalogue/Vegetables/c/1201;1992696_11443.jpg
+;;LookAtOnceBannerComponent;Look At Once on Items;LookAtOnceBannerComponent;"/";1992697_11445.jpg
+
+INSERT_UPDATE RotatingImagesComponent;$contentCV[unique=true];uid[unique=true];name;banners(&componentRef);&componentRef
+;;GrocerymateHomepageCarouselComponent;Grocerymate Homepage Carousel;HousefullSaleBannerComponent,StationeryAndGamesBannerComponent,CashBackBannerComponent,BigBasketBannerComponent,LookAtOnceBannerComponent;GrocerymateHomepageCarouselComponent
+

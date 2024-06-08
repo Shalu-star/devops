@@ -1,0 +1,5 @@
+http://localhost:4200/grocerymate-spa/en/USD
+npm install -g @angular/cli
+npm install --global yarn
+
+ng new spartacusstore --style=scss

@@ -1,0 +1,12 @@
+Spartacus documentation
+
+1. About CORS
+The CORS mechanism defines a way for a browser and a server to decide which cross-origin requests for restricted resources can or cannot be allowed.
+2. We can run spartacus in both development and production mode 
+3. Spartacus schematics allow you to install Spartacus libraries in your project. Eg, if developing schematics for Spartacus 3.0, then you should install Spartacus 2.0.
+
+
+
+Task to do :
+
+ok. next task is to update rotating banner image with new images for spartacus only do it via impex only

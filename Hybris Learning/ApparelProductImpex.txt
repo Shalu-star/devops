@@ -1,0 +1,31 @@
+APPARELPRODUCTIMPEX:
+
+
+$productCatalog=apparelProductCatalog
+$productCatalogName=Apparel Product Catalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$baseProduct=baseProduct(code, catalogVersion(catalog(id[default='$productCatalog']),version[default='Staged']))
+$approved=approvalstatus(code)[default='approved']
+$taxGroup=Europe1PriceFactory_PTG(code)[default=eu-vat-full]
+
+INSERT_UPDATE ApparelProduct;code[unique=true];$catalogVersion;productHealthCondition
+;300427205;;badQualityProduct
+;300441363;;worstQualityProduct
+;300410966;;goodQualityProduct
+
+
+
+
+ABOUT ADDON:
+
+addon cannot be used independently , it is used with some storefront.
+
+CREATING ADDON
+1. ant extgen
+2. choose yaddon template
+3. write the name of addon
+4. write package name
+5. add addon name in localextension.xml file of config folder (source), add target addon (eg; trainingstorefront), check whether addonsupport is present or not if not then add in the file
+6.ant addoninstall -Daddonnames="hybrisTestAddon" -DaddonStorefront.storefrontTemplateName="trainingstorefront"
+7. ant addonuninstall -Daddonnames="hybrisTestAddon" -DaddonStorefront.storefrontTemplateName="trainingstorefront" ---> for removing the addon from trainingstorefront
+8. ant clean all

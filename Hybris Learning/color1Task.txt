@@ -1,0 +1,80 @@
+Choose any five instock product and display that product colour on PDP page via adding new backend attribute
+and other instock products colour display as default black. For out of stock product, no change on PDP page
+
+
+
+
+public class ProductColorPopulator extends ProductPopulator implements Populator<ProductModel, ProductData>
+{
+
+
+
+   @Override
+    public void populate(final ProductModel source, final ProductData target) throws ConversionException
+    {
+        if (source.getColor1() == null || source.getColor1().isEmpty() || source.getColor1().isBlank())
+        {
+
+
+
+           target.setColor1("Black");
+        }
+        else
+        {
+            target.setColor1(source.getColor1());
+        }
+
+
+
+   }
+
+
+
+
+
+
+}
+
+
+
+##################################################################### Custom Populator ends
+
+
+
+<itemtype code="Product" autocreate="false" generate="false">
+                <attributes>
+                    <attribute  qualifier="color1" type="java.lang.String">
+                   <persistence type="property" />
+                        </attribute>
+                </attributes>
+            </itemtype>
+##############################################################custom-item.xml
+<bean class="de.hybris.platform.commercefacades.product.data.ProductData">
+     <property name="color1" type="java.lang.String"/>
+    </bean>
+    
+  <bean class="de.hybris.platform.commerceWebservicecommons.dto.product.ProductWsDTO">
+    <property name="color1" type="String"/>
+    </bean>
+
+
+
+#############################################################facade-beans.xml
+
+
+
+<bean id="productColorPopulator" class="de.hybris.training.facades.populators.ProductColorPopulator" parent="productPopulator"/>
+
+
+
+
+    <bean parent="modifyPopulatorList">
+        <property name="list" ref="productConverter"/>
+        <property name = "add" ref = "productColorPopulator"/>
+    </bean>
+###########################################################facade-spring.xml
+
+
+
+<div class="color1">${ycommerce:sanitizeHTML(product.color1)}</div>
+##########################################################ProductDeatilsPannel.tag

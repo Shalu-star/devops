@@ -1,0 +1,21 @@
+C:\CXCOMM220500P\hybant modulegen -Dinput.module=accelerator -Dinput.name=training -Dinput.package=de.hybris.training -Dinput.template=developris\bin\modules\b2c-accelerator\electronicsstore\resources\electron
+icsstore\import\sampledata\contentCatalogs\electronicsContentCatalog
+v
+
+
+
+
+ant modulegen -Dinput.module=accelerator -Dinput.name=grocerymate -Dinput.package=de.hybris.grocerymate -Dinput.template=develop
+
+
+
+website.electronics.http=http\://electronics.local\:9001/grocerymatestorefront
+website.electronics.https=https\://electronics.local\:9002/grocerymatestorefront
+ant clean all
+ant initialize
+Add 127.0.0.1   electronics.local into hosts file  kq
+run hybrisserver.bat
+
+https://electronics.local:9002/grocerymatestorefront/
+https://localhost:9002/grocerymatestorefront/?site=electronics
+https://localhost:9002/electronicsstorefront/electronics/en/?site=electronics&clear=true

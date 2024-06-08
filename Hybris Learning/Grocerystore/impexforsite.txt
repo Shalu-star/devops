@@ -1,0 +1,5 @@
+$siteUid=grocerymate
+# CMS Site
+INSERT_UPDATE CMSSite;uid[unique=true];
+
+;$siteUid;alpha

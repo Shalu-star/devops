@@ -1,0 +1,43 @@
+.we rarely use the addon backend project mostly we use this on storefront.
+It has no impact on corelogic of code. It is an addable features.
+we add the codebase of addon to extension.
+Addons are independent code which can be plugged anywhere.
+*********************************************************************************
+1. To create addon:
+ we hav to enter command ant extgen.
+ then we hv to select a template. if we select yaddon template then it will ultimately create addon. nd if we selct other template then normal extension will be created.
+ aftr tht we hav to name our addon.
+ then package name.
+
+after these process in custom folder our addon will be created. 
+In this addon ther is extra folder accelatoraddon folder which is ver important.
+
+****************************************************************************************************************************
+
+2. How to install addon to an extension?
+
+ Ther is a source addon and we hav to copy this to a target extension. 
+ First we hav to add source addon and target extension in localextensions.xml file.  addon support helps to copy the sourcr addon to target extension.
+ then we hav to run this command: ant addoninstall -Daddonnames="hybrisaddonTest" -DaddonStorefront.storefrontTemplateName="trainingstorefront"after firing this command addon will be added to extensioinfo.xml file of extension
+									||							  ||
+									||							  ||
+									\/							  \/
+								source-addon name						Target-extension name
+
+
+to uninstall addon: ant addonuninstall -Daddonnames="hybrisaddonTest" -DaddonStorefront.storefrontTemplateName="trainingstorefront"
+after hitting this command addon will be removed only from extensioninfo.xml file.
+
+after hiiting ant clean all addon folder will be removed from extension.
+**********************************************************************************************************************
+hybrisaddonTest->accelatoraddon->web there two folder src nd webroot get copied into storefront
+
+Addon file will get copied inside training-->trainingstorefront-->web-->addonsrc folder
+training-->trainingstorefront-->web-->webroot-->_ui-->addons in this placealso our addon file will be created. These file will be created after doing ant clean all.
+
+***********************************************************************************************************************************************************
+
+
+Extensions are independent body with tightly coupled codebase.
+
+hybrisaddonTest

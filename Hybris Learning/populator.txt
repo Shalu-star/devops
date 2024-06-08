@@ -1,0 +1,92 @@
+[17:13] K P A, Vengadesh
+
+1. Create item type in items.xml
+
+
+
+<itemtype code="Product" generate="false" autocreate="false">
+   <attributes>
+     <attribute qualifier="leadTime" type="java.lang.String">
+       <description>Standard Lead Time</description>
+       <modifiers/>
+       <persistence type="property" />
+     </attribute>
+   </attributes>
+</itemtype>
+
+
+
+
+2. Create a bean in Custom facades-beans.xml
+
+
+
+<bean class = "de.hybris.platform.commercefacades.product.data.ProductData">
+        <property name="leadTime" type="String"> </property>
+</bean>
+
+
+
+
+3. ant all (to update ProductModel and ProductData)
+
+
+
+4. Create a Populator in Custom Facades
+
+
+
+/**
+*
+*/
+package de.hybris.platform.yacceleratorfacades.populators;
+
+
+
+import de.hybris.platform.commercefacades.product.converters.populator.ProductPopulator;
+import de.hybris.platform.commercefacades.product.data.ProductData;
+import de.hybris.platform.converters.Populator;
+import de.hybris.platform.core.model.product.ProductModel;
+import de.hybris.platform.servicelayer.dto.converter.ConversionException;
+
+
+
+
+/**
+* @author venkpa
+*
+*/
+public class ProductCustomAttributesPopulator extends ProductPopulator implements Populator<ProductModel, ProductData>
+{
+    @Override
+    public void populate(final ProductModel source, final ProductData target) throws ConversionException
+    {
+        target.setLeadTime(source.getLeadTime());
+        super.populate(source, target);
+    }
+}
+
+
+
+5. Create a bean for Populator in custom facades Spring.xml
+
+
+
+<alias name="defaultProductConverter" alias="productConverter"/>
+    <bean id="defaultProductConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="de.hybris.platform.commercefacades.product.data.ProductData"/>
+        <property name="populators">
+            <list>
+                <ref bean="productCustomAttributesPopulator"/>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id = "productCustomAttributesPopulator"
+    class = "de.hybris.platform.yacceleratorfacades.populators.ProductCustomAttributesPopulator "
+    parent = "productPopulator" >
+    </bean >
+
+
+
+6. update system (to persist attribute in database)

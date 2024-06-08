@@ -1,0 +1,9 @@
+https://://localhost:9002/grocerymatestorefront/en?site=grocerymate
+
+
+
+
+$siteUid=grocerymate
+# CMS Site
+INSERT_UPDATE CMSSite;uid[unique=true];
+;$siteUid;blue

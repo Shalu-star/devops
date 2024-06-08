@@ -1,0 +1,43 @@
+Command to setup the b2c_acc_plus
+
+
+First Command:-
+
+install.bat -r b2c_acc_plus setup -A initAdminPassword=nimda
+
+
+
+second command:-
+
+install.bat -r b2c_acc_plus initialize -A initAdminPassword=nimda
+
+
+
+third command:-
+
+install.bat -r b2c_acc_plus start
+
+
+
+
+
+
+
+Link to run Electronic site
+
+https://localhost:9002/yacceleratorstorefront/?site=electronics&clear=true
+
+
+
+command for license renew -> license.bat -temp CPS_SQL
+
+
+
+
+
+ <extension name='yacceleratorbackoffice' />
+    <extension name='yacceleratorinitialdata' />
+    <extension name='yacceleratorfulfilmentprocess' />
+    <extension name='yacceleratorstorefront' />
+    <extension name='ycommercewebservices' />
+    <extension name='ycommercewebservicestest' />

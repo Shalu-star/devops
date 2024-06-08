@@ -1,0 +1,37 @@
+$siteUid=electronics
+INSERT_UPDATE CustomerRemovalCronJob; code[unique=true];job(code);startsWithaOrA;sessionLanguage(isocode);sessionCurrency(isocode);sites(uid)[default=$siteUid]
+;customerRemovalCronJob;customerRemovalJob;A;;
+
+
+
+
+INSERT_UPDATE Trigger;cronjob(code)[unique=true];active;cronExpression
+#Fires at 10:15 AM everyday
+;customerRemovalCronJob;true;0 15 10 * * ?
+
+
+
+select * from {servicelayerjob} where {code} = 'customerRemovalJob'
+
+
+
+
+
+
+INSERT_UPDATE ServicelayerJob;code[unique=true];springId[unique=true]
+;customerListRemovalServiceJob; customerRemovalJob
+
+
+INSERT_UPDATE CustomerRemovalCronJob ; code[unique=true];job(code); sessionLanguage(isocode);startsWithaOrA
+;customerRemovalCronJob;customerListRemovalServiceJob;en;A
+
+
+INSERT_UPDATE Trigger;cronjob(code)[unique=true];cronExpression
+;CustomerRemovalCronJob; 0 */2 * ? * * 
+
+
+
+
+select {code} from {servicelayerjob} where {code} = 'customerRemovalJob'
+
+
